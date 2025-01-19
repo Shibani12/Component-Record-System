@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Record System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <h1 class="navbar-brand">Component Issue Tracker</h1>
+            <a href="login.html" class="btn btn-outline-danger">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="student_index.html" class="list-group-item list-group-item-action">Home</a>
+                    <a href="comp_avalibility.html" class="list-group-item list-group-item-action">Component
+                        Availability Check</a>
+                    <a href="#" class="list-group-item list-group-item-action">Request Hardware</a>
+                    <a href="#" class="list-group-item list-group-item-action">View Requests</a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title mb-4">Request Hardware</h2>
+                        <form id="requestForm">
+                            <div class="mb-3">
+                                <label for="user" class="form-label">Name:</label>
+                                <input type="text" id="user" class="form-control" placeholder="Enter your name"
+                                    required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="hardware" class="form-label">Select Hardware:</label>
+                                <select id="hardware" class="form-select" multiple required>
+                                    <option value="">-- Select Hardware --</option>
+                                    <option value="Arduino uno">Arduino uno</option>
+                                    <option value="Raspberry Pi">Raspberry Pi</option>
+                                    <option value="Stepper Motors">Stepper Motors</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit Request</button>
+                        </form>
+
+                        <h2 class="mt-5">Request Status</h2>
+                        <table class="table table-bordered" id="statusTable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Hardware</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Requests will appear here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById('requestForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form values
+            const userName = document.getElementById('user').value;
+            const hardwareSelect = document.getElementById('hardware');
+            const selectedHardware = Array.from(hardwareSelect.selectedOptions).map(option => option.value);
+
+            // Add data to the table
+            const tableBody = document.getElementById('statusTable').querySelector('tbody');
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${userName}</td>
+                <td>${selectedHardware.join(', ')}</td>
+                <td>Pending</td>
+            `;
+            tableBody.appendChild(row);
+
+            // Clear form fields
+            document.getElementById('user').value = '';
+            hardwareSelect.selectedIndex = -1; // Deselect all options
+        });
+    </script>
+</body>
+
+</html>

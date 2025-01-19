@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Record System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <h1>Component Issue Tracker</h1>
+            <a href="login.html" class="btn logout-button">Logout</a>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+        <div class="sidebar">
+            <ul>
+                <li><a href="student_index.html">Home</a></li>
+                <li><a href="comp_avalibility.html">Component Availability Check</a></li>
+                <li><a href="reqst_comp.html">Request Hardware</a></li>
+                <li><a href="#">View Requests</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="container">
+                <h2>Search Hardware Availability</h2>
+                <form id="searchForm" class="mb-4">
+                    <div class="mb-3">
+                        <label for="searchInput" class="form-label">Enter Hardware Name:</label>
+                        <input type="text" class="form-control" id="searchInput" placeholder="e.g., Laptop, Projector">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="searchButton">Search</button>
+                </form>
+
+                <h2>Search Results</h2>
+                <table class="table" id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>Hardware Name</th>
+                            <th>Availability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Search results will appear here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const hardwareDatabase = [
+            { name: "Laptop", availability: "Available" },
+            { name: "Projector", availability: "Out of Stock" },
+            { name: "Tablet", availability: "Available" },
+            { name: "Printer", availability: "Available" },
+        ];
+
+        document.getElementById("searchButton").addEventListener("click", function () {
+            const searchInput = document.getElementById("searchInput").value.trim().toLowerCase();
+            const resultsTableBody = document.getElementById("resultsTable").querySelector("tbody");
+            resultsTableBody.innerHTML = ""; // Clear previous results
+
+            const results = hardwareDatabase.filter(hardware => hardware.name.toLowerCase().includes(searchInput));
+
+            if (results.length > 0) {
+                results.forEach(result => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `<td>${result.name}</td><td>${result.availability}</td>`;
+                    resultsTableBody.appendChild(row);
+                });
+            } else {
+                const row = document.createElement("tr");
+                row.innerHTML = `<td colspan="2">No results found</td>`;
+                resultsTableBody.appendChild(row);
+            }
+        });
+    </script>
+</body>
+
+</html>
