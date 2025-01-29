@@ -14,7 +14,7 @@
     <nav>
         <div>
             <!-- <img src="/asset/logo.jpg" alt="Logo"> -->
-            <h1>Component Issue Tracker</h1>
+            <h1>Component Record System</h1>
         </div>
         <a href="login.html">
             <button class="logout-button">Logout</button>
@@ -33,21 +33,40 @@
         </div>
         <div class="main-content">
             <div class="col-md-10">
-
-
-
-
-
+                <div class="container">
+                    <h2 class="my-4">Request Status</h2>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Hardware</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="statusTableBody">
+                            <!-- Data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
     </div>
 
     <script>
+        const requestData = JSON.parse(localStorage.getItem('requests')) || [];
+        const tableBody = document.getElementById('statusTableBody');
 
-
-
-
+        // Populate table
+        requestData.forEach(request => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${request.name}</td>
+                <td>${request.components}</td>
+                <td>${request.status}</td>
+            `;
+            tableBody.appendChild(row);
+        });
     </script>
 
 
