@@ -17,25 +17,56 @@
 
         .login-card {
             background: white;
-            padding: 30px;
-            border-radius: 8px;
+            padding: 40px;
+            border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             max-width: 400px;
-            text-align: center;
+            width: 100%;
+            margin: 0 auto;
         }
 
         .login-card img {
             max-width: 150px;
             margin-bottom: 20px;
+            margin-left: 80px;
         }
 
         .btn-login {
             background-color: #343a40;
             color: white;
+            padding: 12px;
+            border-radius: 4px;
+            border: none;
         }
 
         .btn-login:hover {
             background-color: #212529;
+        }
+
+        .form-control {
+            border-radius: 4px;
+        }
+
+        .login-card h3 {
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .alert {
+            display: none;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 576px) {
+            .login-card {
+                padding: 30px;
+                max-width: 100%;
+            }
+
+            .btn-login {
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -45,11 +76,14 @@
         <!-- Logo -->
         <img src="asset/logo1.png" alt="PHCET Logo">
         <!-- Title -->
-        <h3 class="mb-4">Component Issue Tracker</h3>
+        <h3>Component Record System</h3>
+        <!-- Alert for Invalid Login -->
+        <div class="alert alert-danger" id="loginError" role="alert">
+            Invalid username or password!
+        </div>
         <!-- Form -->
         <form id="loginForm">
             <div class="mb-3">
-                <!-- <input type="email" class="form-control" placeholder="Enter your mes email ID" required> -->
                 <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
             </div>
             <div class="mb-3">
@@ -76,7 +110,12 @@
             } else if (username === "student" && password === "stud123") {
                 window.location.href = "student_index.html"; // Redirect to student index page
             } else {
-                alert("Invalid username or password!"); // Show alert for invalid credentials
+                // Show alert for invalid credentials
+                const errorAlert = document.getElementById('loginError');
+                errorAlert.style.display = "block";
+                setTimeout(function () {
+                    errorAlert.style.display = "none";
+                }, 3000);
             }
         });
     </script>
