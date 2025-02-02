@@ -14,7 +14,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("navbar").innerHTML = `
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+        <nav class="navbar navbar-expand-lg navbar-dark" style=" background: linear-gradient(135deg, #ec370a, #372212); shadow">
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold" href="staff_index.html">Component Record System</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
