@@ -11,26 +11,9 @@
 </head>
 
 <body>
-    <nav>
-        <div>
-            <!-- <img src="/asset/logo.jpg" alt="Logo"> -->
-            <h1>Component Record System</h1>
-        </div>
-        <a href="login.html">
-            <button class="logout-button">Logout</button>
-        </a>
-    </nav>
+    <div id="navbar"></div>
     <div class="content-wrapper">
-        <div class="sidebar">
-            <ul>
-                <li><a href="student_index.html">Home</a></li>
-                <li><a href="comp_avalibility.html">Component Availability Check</a></li>
-                <li><a href="reqst_comp.html">Request Hardware</a></li>
-                <li><a href="status.html">Request Status</a></li>
-                <li><a href="test.html">test</a></li>
-
-            </ul>
-        </div>
+        <div id="sidebar"></div>
         <div class="main-content">
             <div class="col-md-10">
                 <div class="container">
@@ -53,7 +36,7 @@
     </div>
     </div>
 
-    <script>
+    <!-- <script>
         const requestData = JSON.parse(localStorage.getItem('requests')) || [];
         const tableBody = document.getElementById('statusTableBody');
 
@@ -67,7 +50,11 @@
             `;
             tableBody.appendChild(row);
         });
-    </script>
+    </script> -->
+
+    <script src="/js/navbar.js"></script>
+    <script src="/js/stud_sidebar.js"></script>
+    <script src="/js/reqst_status.js"></script>
 
 
 

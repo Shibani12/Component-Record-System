@@ -1,3 +1,4 @@
+//hardware list
 let hardwareDatabase = [
     { name: "Laptop", availability: "Available" },
     { name: "Projector", availability: "Out of Stock" },
@@ -38,3 +39,7 @@ document.getElementById("updateButton").addEventListener("click", function () {
 window.onload = function () {
     loadHardwareOptions();
 };
+
+
+
+

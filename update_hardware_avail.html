@@ -11,26 +11,9 @@
 </head>
 
 <body>
-    <nav>
-        <div>
-            <!-- <img src="/asset/logo.jpg" alt="Logo"> -->
-            <h1>Component Record System</h1>
-        </div>
-        <a href="login.html">
-            <button class="logout-button">Logout</button>
-        </a>
-    </nav>
+    <div id="navbar"></div>
     <div class="content-wrapper">
-        <div class="sidebar">
-            <ul>
-                <li><a href="staff_index.html">Home</a></li>
-                <li><a href="comp_avalibility.html">Component Availability Check</a></li>
-                <li><a href="update_hardware_avail.html">Update Hardware availability</a></li>
-                <li><a href="view_reqst.html">Request status update</a></li>
-                <li><a href="return_record.html">Return record</a></li>
-
-            </ul>
-        </div>
+        <div id="sidebar"></div>
         <div class="main-content">
             <div class="col-md-10">
                 <div class="container">
@@ -59,6 +42,8 @@
     </div>
 
     <script src="/js/script.js"></script>
+    <script src="/js/navbar.js"></script>
+    <script src="/js/staff_sidebar.js"></script>
 </body>
 
 </html>
